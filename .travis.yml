@@ -1,0 +1,53 @@
+language: objective-c
+matrix:
+  include:
+    - env: OSX=10.11
+      os: osx
+      osx_image: osx10.11
+      rvm: system
+cache:
+  directories:
+  - /usr/local
+
+before_install:
+  - if [ -f ".git/shallow" ]; then travis_retry git fetch --unshallow; fi
+  - whoami
+  - wget https://www.python.org/ftp/python/3.4.4/python-3.4.4-macosx10.6.pkg
+  - sudo installer -pkg python-3.4.4-macosx10.6.pkg -target /
+  - python -V
+  - python3 -V
+  - echo $(brew --repo)
+  - brew --repo
+  - pwd
+  - env
+  - sudo chown -R $USER $(brew --repo)
+  - if [ ! -f $(brew --repo)/updated.flg ]; then { brew update; touch $(brew --repo)/updated.flg; } fi
+  - brew install python3
+  - python -V
+  - python3 -V
+  - mkdir -p $(brew --repo)/Library/Taps/homebrew
+  - env | grep TRAVIS_
+  - ln -s $PWD $(brew --repo)/Library/Taps/homebrew/hugh_test
+  - cd $(brew --repo)/Library/Taps/homebrew/hugh_test
+  - export TRAVIS_BUILD_DIR="$(brew --repo)/Library/Taps/homebrew/hugh_test"
+
+script:
+  - echo hello
+  - mkdir build
+  - cd build
+  - cmake ..
+  - make -j 4
+  - ./hugh_test
+#  - brew install --verbose Clew --tap=hughperkins/test-travis-osx
+#  - brew test --verbose Clew --tap=hughperkins/test-travis-osx
+#  - brew install --verbose Easycl --tap=hughperkins/test-travis-osx
+#  - brew test --verbose Easycl --tap=hughperkins/test-travis-osx
+#  - brew install --verbose Clblas --tap=hughperkins/test-travis-osx
+#  - brew install --verbose Deepcl --tap=hughperkins/test-travis-osx
+#  - brew test --verbose Deepcl --tap=hughperkins/test-travis-osx
+  # - brew test-bot --tap=hughperkins/test-travis-osx
+
+notifications:
+  email:
+    on_success: never
+    on_failure: never
