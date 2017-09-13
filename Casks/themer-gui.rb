@@ -1,11 +1,11 @@
 cask 'themer-gui' do
-  version '0.4.0'
-  sha256 'e8c8a4607782c116f5321e73be4498509d8d8232da708a0e5b8fac087ae62549'
+  version '0.5.0'
+  sha256 '7e1093340d23f58af333af4c27aad3e34b76ddb50c12745670d1a3f823b5fa79'
 
   url "https://github.com/mjswensen/themer-gui/releases/download/v#{version}/Themer-#{version}.dmg"
   appcast 'https://github.com/mjswensen/themer-gui/releases.atom',
-          checkpoint: 'e5b451b7a63ee7ed0e9eacb6a89bfec864950f570a41e4ea2724dfb2a6f9f8a6'
-  name 'SSHFS GUI'
+          checkpoint: '670d0c5de523928ba8d7655b51e3a2b1f8b78416f208edcec6d3192a907f9e00'
+  name 'Themer'
   homepage 'https://github.com/mjswensen/themer-gui'
 
   app 'Themer.app'
