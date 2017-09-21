@@ -1,10 +1,11 @@
+
 cask 'themer-gui' do
-  version '0.5.0'
-  sha256 '7e1093340d23f58af333af4c27aad3e34b76ddb50c12745670d1a3f823b5fa79'
+  version '0.6.0'
+  sha256 'e37dad677126af1e0b28f398742d366411cfba6deac4536996a5decbabd2fabd'
 
   url "https://github.com/mjswensen/themer-gui/releases/download/v#{version}/Themer-#{version}.dmg"
   appcast 'https://github.com/mjswensen/themer-gui/releases.atom',
-          checkpoint: '670d0c5de523928ba8d7655b51e3a2b1f8b78416f208edcec6d3192a907f9e00'
+          checkpoint: '61b5c3eb139bcfae74166751f321efa9963880c35b1dd869c8848a294318d246'
   name 'Themer'
   homepage 'https://github.com/mjswensen/themer-gui'
 
